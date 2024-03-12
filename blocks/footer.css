@@ -1,6 +1,6 @@
 .footer {
   max-width: 880px;
-  width: calc(100%-38px);
+  width: calc(100% - 38px);
   position: relative;
   margin: 0 auto;
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -16,12 +16,6 @@
 }
 
 @media screen and (max-width: 920px) {
-  .footer__description {
-    max-width: 282px;
-  }
-}
-
-@media screen and (max-width: 620px) {
   .footer__description {
     max-width: 282px;
   }

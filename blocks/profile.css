@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   align-items: center;
-  padding-top: 45px 0 51px;
+  padding: 45px 0 51px;
 }
 
 .profile__info {
@@ -35,6 +35,7 @@
   padding: 0;
   margin-left: auto;
   border: 2px solid #fff;
+  border-radius: 2px;
   cursor: pointer;
 }
 
@@ -45,7 +46,7 @@
 .profile__title {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 42px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 48px;
   letter-spacing: 0em;
   text-align: left;
@@ -136,6 +137,5 @@
     margin: 36px 0;
     max-width: 282px;
     width: 100%;
-    padding: 0;
   }
 }
