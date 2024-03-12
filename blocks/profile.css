@@ -86,6 +86,7 @@
 @media screen and (max-width: 880px) {
   .profile {
     flex-direction: column;
+    align-items: center;
   }
 
   .profile__description {
@@ -115,6 +116,16 @@
     margin: 42px 0 30px;
   }
 
+  .profile__info {
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+  /* I'm having trouble here making the profile section look as it should. Could you give me some guidance? Thanks! */
+
   .profile__title {
     min-width: 196px;
     width: 100%;
@@ -124,13 +135,9 @@
     margin-right: 10px;
   }
 
-  .profile__info {
-    max-width: 320px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
   }
 
   .profile__add-button {
