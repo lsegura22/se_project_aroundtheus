@@ -1,0 +1,18 @@
+.header {
+  margin-top: 45px;
+  margin-bottom: 40px;
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.header__logo {
+  width: 173px;
+}
+
+@media screen and (max-width: 520px) {
+  .header__logo {
+    max-width: 126px;
+    padding-left: 27px;
+  }
+}

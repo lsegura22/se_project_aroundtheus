@@ -10,7 +10,11 @@
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img src="./images/logo.svg" alt="Around the U.S. logo" />
+        <img
+          src="./images/logo.svg"
+          alt="Around the U.S. logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
@@ -21,13 +25,13 @@
           />
           <div class="profile__info">
             <p class="profile__title">Jacques Cousteau</p>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button"></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__add-button"></button>
+          <button class="profile__add-button" type="button"></button>
         </section>
         <section class="cards page__section">
-          <ul class="card__list">
+          <ul class="cards__list">
             <li class="card">
               <img src="./images/yosemite-valley.png" class="card__image" />
               <div class="card__description">
@@ -77,6 +81,8 @@
         </section>
       </main>
     </div>
-    <footer class="footer page__section">© 2022 Around The U.S.</footer>
+    <footer class="footer">
+      <p class="footer__description">© 2022 Around The U.S.</p>
+    </footer>
   </body>
 </html>

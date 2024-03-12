@@ -6,187 +6,24 @@
 .page__section {
   max-width: 880px;
   width: 100%;
-  position: relative;
   margin: 0 auto;
-  box-sizing: border-box;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 .page__content {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0 20px;
 }
 
-.header {
-  margin-top: 45px;
-  line-height: 74px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-left: auto;
-}
-
-.profile__info {
-  display: grid;
-  grid-template-areas:
-    "title button"
-    "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
-  align-items: center;
-  width: 415px;
-  height: 77px;
-}
-
-.profile__edit-button {
-  background: transparent url(../images/edit-button.svg) center no-repeat;
-  height: 24px;
-  width: 24px;
-  grid-area: button;
-  padding: 0;
-  border: 1px solid #fff;
-  margin-left: 18px;
-}
-
-.profile__add-button {
-  background: transparent url(../images/add-button.svg) center no-repeat;
-  width: 150px;
-  height: 50px;
-  padding: 0;
-  margin-left: auto;
-  border: 2px solid #fff;
-  border-radius: 2px;
-}
-
-.profile__title {
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-size: 42px;
-  grid-area: title;
-  margin: 0;
-}
-
-.profile__description {
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 400;
-  grid-area: description;
-  margin: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 373px;
-  overflow: hidden;
-}
-
-.profile__image {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  background-position: center;
-  margin-right: 30px;
-}
-
-.cards {
-  margin-top: 51px;
-  max-height: 742px;
-}
-
-.card__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  color: black;
-  font-weight: 900;
-}
-
-.card__image {
-  width: 282px;
-  height: 282px;
-}
-
-.card__description {
-  display: flex;
-  position: relative;
-  border-radius: 0 0 10px 10px;
-  background-color: white;
-  color: black;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.card__name {
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-size: 24px;
-  font-weight: 900;
-  height: 29px;
-  max-width: 100%;
-  margin-left: 20px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.card__like-button {
-  background: transparent url(../images/like-inactive.svg) center no-repeat;
-  width: 21px;
-  height: 18px;
-  color: #000;
-  margin-right: 30px;
-  border-style: hidden;
-}
-
-.footer {
-  position: fixed;
-  padding-top: 60px;
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-size: 18px;
-  font-weight: 400;
-  color: #545454;
-  padding-bottom: 60px;
-  width: 100%;
-  text-align: start;
-}
-
-@media screen and (max-width: 480px) {
-  .profile {
-    flex-direction: column;
+@media screen and (max-width: 520px) {
+  .page__section {
+    max-width: 320px;
+    gap: inherit;
   }
 
-  .profile__info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .profile__description {
-    width: 100%;
-    text-align: center;
-  }
-
-  .profile__add-button {
-    margin: 0;
-    width: 100%;
+  .page__content {
+    padding: 0;
   }
 }
