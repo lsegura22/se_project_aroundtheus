@@ -105,6 +105,7 @@
 
 @media screen and (max-width: 520px) {
   .profile {
+    display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 22px;
@@ -120,8 +121,8 @@
   }
 
   .profile__info {
+    display: flex;
     max-width: 282px;
-    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -131,7 +132,6 @@
 
   .profile__title {
     min-width: 196px;
-    width: 100%;
     font-size: 22px;
     line-height: 27px;
     margin-top: auto;
@@ -143,6 +143,10 @@
     width: 18px;
     margin: 0;
     margin-left: 10px;
+  }
+
+  .profile__description {
+    width: 100%;
   }
 
   .profile__add-button {
