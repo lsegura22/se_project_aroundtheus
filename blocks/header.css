@@ -1,6 +1,6 @@
 .header {
   margin-top: 45px;
-  max-width: 880p;
+  max-width: 880px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
@@ -11,6 +11,10 @@
 }
 
 @media screen and (max-width: 520px) {
+  .header {
+    margin-top: 28px;
+  }
+
   .header__logo {
     max-width: 126px;
     padding-left: 27px;

@@ -120,9 +120,11 @@
   }
 
   .profile__info {
+    max-width: 282px;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     padding: 0;
   }
   /* I'm having trouble here making the profile section look as it should. Could you give me some guidance? Thanks! */
@@ -133,12 +135,14 @@
     font-size: 22px;
     line-height: 27px;
     margin-top: auto;
-    margin-right: 10px;
+    text-align: center;
   }
 
   .profile__edit-button {
     height: 18px;
     width: 18px;
+    margin: 0;
+    margin-left: 10px;
   }
 
   .profile__add-button {
