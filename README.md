@@ -20,4 +20,4 @@ This project is made so all the elements are displayed correctly on popular scre
 https://lsegura22.github.io/se_project_aroundtheus/
 
 **Video**
-I'll add video once code is accepted (:
+https://drive.google.com/file/d/1paMWtuNb1cd4Xsk5rhq3q9oAXnz6RXo5/view?usp=sharing
