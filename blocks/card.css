@@ -21,7 +21,7 @@
   font-weight: 900;
 }
 
-.card__name {
+.card__title {
   overflow: hidden;
   white-space: nowrap;
   font-family: "Inter", Arial, Helvetica, sans-serif;
