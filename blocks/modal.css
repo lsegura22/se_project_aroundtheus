@@ -93,3 +93,34 @@
   height: 27px;
   width: 100%;
 }
+
+@media screen and (max-width: 630px) {
+  .modal__close {
+    bottom: calc(100% + 30px);
+    left: calc(100% - 30px);
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    background-size: contain;
+    transition: 0.3s;
+  }
+
+  .modal__heading {
+    font-size: 18px;
+  }
+
+  .modal__button {
+    max-width: 238px 100%;
+    max-height: 50px;
+    border: none;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .modal__container {
+    max-width: 282px;
+    max-height: 322px;
+    padding: 30px;
+  }
+}
