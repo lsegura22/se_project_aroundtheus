@@ -1,45 +1,87 @@
+.card__text {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+
+.cards__list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 20px 17px;
+  padding: 0;
+  margin: 0;
+}
+
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   list-style: none;
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
+  object-fit: cover;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.card__image_container {
+  position: relative;
+  height: 282px;
 }
 
 .card__description {
   display: flex;
-  background: white;
-  color: black;
-  padding: 25px 20px;
+  color: #000000;
+  background-color: white;
+  padding: 25px 10px 25px 10px;
   align-items: center;
   justify-content: space-between;
-  font-weight: 900;
 }
 
-.card__title {
-  overflow: hidden;
-  white-space: nowrap;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-size: 24px;
-  font-weight: 900;
-  margin: 0;
-  text-overflow: ellipsis;
-}
-
-.card__like-button {
-  background: transparent url(../images/like-inactive.svg) center no-repeat;
+.card__button-like {
+  background: transparent url("/images/like-inactive.svg") center no-repeat;
+  display: flex;
   width: 21px;
   height: 18px;
   border: none;
+  margin-left: auto;
   cursor: pointer;
+  padding: 15px;
 }
 
-.card__like-button:hover {
-  opacity: 50%;
+.card__button-like:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in;
+}
+
+.card__button-like_active {
+  background: url("../images/activelike.svg") center no-repeat;
+}
+
+.card__delete-button {
+  background: url("/images/cardDelete.svg");
+  width: 18px;
+  height: 19.3px;
+  color: white;
+  border: none;
+  top: 18px;
+  right: 15px;
+  z-index: 10;
+  position: absolute;
+  cursor: pointer;
+  padding: 0;
+}
+
+.card__delete-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in;
 }
