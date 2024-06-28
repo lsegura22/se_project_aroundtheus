@@ -79,6 +79,9 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__text");
   const likeButton = cardElement.querySelector(".card__button-like");
+
+  /* I am not sure what's going on; I can see both buttons on my end. */
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__button-like_active");
   });
