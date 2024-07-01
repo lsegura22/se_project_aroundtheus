@@ -50,7 +50,7 @@
 }
 
 .card__button-like {
-  background: transparent url("/images/like-inactive.svg") center no-repeat;
+  background: transparent url("../images/like-inactive.svg") center no-repeat;
   display: flex;
   width: 21px;
   height: 18px;
@@ -70,7 +70,7 @@
 }
 
 .card__delete-button {
-  background: url("/images/cardDelete.svg");
+  background: url("../images/cardDelete.svg");
   width: 18px;
   height: 19.3px;
   color: white;
