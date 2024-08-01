@@ -1,89 +1,67 @@
-/* I'm not sure what's going on because I can see that buttons on my end. Can you give me some tips? */
-
-.card__text {
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29.05px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 0;
-}
-
-.cards__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
-
 .card {
   display: flex;
   flex-direction: column;
-  list-style: none;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
-  object-fit: cover;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.card__image_container {
-  position: relative;
-  height: 282px;
 }
 
 .card__description {
   display: flex;
-  color: #000000;
   background-color: white;
-  padding: 25px 10px 25px 10px;
+  color: black;
+  padding: 25px 20px;
   align-items: center;
   justify-content: space-between;
+  font-family: "Inter", arial, sans-serif;
 }
 
-.card__button-like {
+.card__title {
+  max-width: 220px;
+  font-family: "Inter", arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card__like-button {
   background: transparent url("../images/like-inactive.svg") center no-repeat;
-  display: flex;
   width: 21px;
   height: 18px;
   border: none;
-  margin-left: auto;
-  cursor: pointer;
-  padding: 15px;
 }
 
-.card__button-like:hover {
+.card__like-button_active {
+  background-image: url("../images/activelike.svg");
+}
+
+.card__like-button:hover {
   opacity: 0.5;
-  transition: 0.5s ease-in;
-}
-
-.card__button-like_active {
-  background: url("../images/activelike.svg") center no-repeat;
+  cursor: pointer;
 }
 
 .card__delete-button {
-  background: url("../images/cardDelete.svg");
+  background: transparent url("../images/cardDelete.svg") center no-repeat;
+  border: none;
+  position: absolute;
   width: 18px;
   height: 19.3px;
-  color: white;
-  border: none;
   top: 18px;
+  left: 249px;
   right: 15px;
-  z-index: 10;
-  position: absolute;
-  cursor: pointer;
-  padding: 0;
+  bottom: 244.7px;
 }
 
 .card__delete-button:hover {
+  cursor: pointer;
   opacity: 0.5;
-  transition: 0.5s ease-in;
 }
