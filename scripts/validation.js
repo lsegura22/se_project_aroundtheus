@@ -2,10 +2,10 @@
 const formValidationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "modal__submit-button_disabled",
+  submitButtonSelector: ".modal__button", // Make sure this matches your button class
+  inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+  errorClass: "popup__error_visible",
 };
 
 // Enable validation
@@ -44,12 +44,12 @@ function checkInputValidity(input, config) {
 function showInputError(input, errorElement, config) {
   input.classList.add(config.inputErrorClass);
   errorElement.textContent = input.validationMessage;
-  errorElement.classList.add(config.errorClass);
+  errorElement.classList.add("popup__error_visible");
 }
 
 function hideInputError(input, errorElement, config) {
   input.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
+  errorElement.classList.remove("popup__error_visible");
   errorElement.textContent = "";
 }
 

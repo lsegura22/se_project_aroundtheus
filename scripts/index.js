@@ -1,5 +1,3 @@
-// I updated my code to close with Escape and Overlay, but clicking on the overlay isn't working"
-
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -79,7 +77,7 @@ function handleEscClose(evt) {
 }
 
 function handleOverlayClose(evt) {
-  if (evt.target === evt.currentTarget) {
+  if (evt.target.classList.contains("modal")) {
     closeModal(evt.target);
   }
 }

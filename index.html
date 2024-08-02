@@ -46,7 +46,7 @@
       </footer>
     </div>
 
-    <!--ADD CARD MODAL-->
+    <!-- ADD CARD MODAL -->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
@@ -64,14 +64,20 @@
             class="modal__input modal__input_type_title"
             required
           />
+          <!-- Highlighted correction: Added span for error message -->
+          <span class="popup__error" id="add-card-title-input-error"></span>
+
           <input
-            type="text"
+            type="url"
             name="url"
             id="add-card-url-input"
             placeholder="Image URL"
             class="modal__input modal__input_type_url"
             required
           />
+          <!-- Highlighted correction: Added span for error message -->
+          <span class="popup__error" id="add-card-url-input-error"></span>
+
           <button
             class="modal__button modal__button_disabled"
             type="submit"
@@ -83,7 +89,7 @@
       </div>
     </div>
 
-    <!--PROFILE EDIT MODAL-->
+    <!-- PROFILE EDIT MODAL -->
     <div class="modal" id="edit-modal">
       <div class="modal__container">
         <button
