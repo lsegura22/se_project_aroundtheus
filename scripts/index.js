@@ -1,3 +1,5 @@
+// I updated my code to close with Escape and Overlay, but clicking on the overlay isn't working"
+
 const initialCards = [
   {
     name: "Yosemite Valley",
