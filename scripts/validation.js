@@ -5,7 +5,7 @@ const formValidationConfig = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "popup__error_visible",
+  errorClass: "modal__error_visible",
 };
 
 // Enable validation

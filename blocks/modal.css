@@ -159,13 +159,15 @@
   border-bottom: 1px solid red;
 }
 
-.modal__container .popup__error {
+.modal__container .modal__error {
   color: red;
   font-size: 0.75rem;
   margin-top: 0.5rem;
-  display: none;
+  height: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.modal__container .popup__error_visible {
-  display: block;
+.modal__container .modal__error_visible {
+  opacity: 1;
 }
