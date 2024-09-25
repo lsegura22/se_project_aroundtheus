@@ -4,28 +4,16 @@
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
+.page__content {
+  margin: 0 auto;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .page__section {
   max-width: 880px;
-  width: 100%;
   margin: 0 auto;
   position: relative;
-}
-
-.page__content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0 20px;
-}
-
-@media screen and (max-width: 900px) {
-  .page__content {
-    padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .page__content {
-    padding: 0;
-  }
+  box-sizing: border-box;
 }

@@ -1,67 +1,74 @@
-// form validation
-const formValidationConfig = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
+class FormValidator {
+  constructor(settings, formSelector) {
+    this._settings = settings;
+    this._inputSelector = settings.inputSelector;
+    this._inputErrorClass = settings.inputErrorClass;
+    this._errorClass = settings.errorClass;
+    this._submitButtonSelector = settings.submitButtonSelector;
+    this._inactiveButtonClass = settings.inactiveButtonClass;
+    this._form = formSelector;
+  }
 
-// Enable validation
-function enableValidation(config) {
-  const forms = Array.from(document.querySelectorAll(config.formSelector));
-  forms.forEach((form) => {
-    form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
+  _showInputError(inputEl) {
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.add(this._inputErrorClass);
+    errorMessageEl.classList.add(this._errorClass);
+    errorMessageEl.textContent = inputEl.validationMessage;
+  }
+
+  _hideInputError(inputEl) {
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.remove(this._inputErrorClass);
+    errorMessageEl.classList.remove(this._errorClass);
+    errorMessageEl.textContent = "";
+  }
+
+  _toggleButtonState() {
+    if (!this._hasInvalidInput()) {
+      this._button.classList.remove(this._inactiveButtonClass);
+      this._button.disabled = false;
+    } else {
+      this._button.classList.add(this._inactiveButtonClass);
+      this._button.disabled = true;
+    }
+  }
+
+  disabledButtonState() {
+    this._button.classList.add(this._inactiveButtonClass);
+    this._button.disabled = true;
+  }
+
+  _hasInvalidInput() {
+    return this._inputEls.some((inputEl) => !inputEl.validity.valid);
+  }
+
+  _checkInvalidValidity(inputEl) {
+    if (!inputEl.validity.valid) {
+      this._showInputError(inputEl);
+    } else {
+      this._hideInputError(inputEl);
+    }
+  }
+
+  _setEventListeners() {
+    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
+    this._button = this._form.querySelector(this._submitButtonSelector);
+
+    this._inputEls.forEach((inputEl) => {
+      inputEl.addEventListener("input", () => {
+        this._checkInvalidValidity(inputEl);
+        this._toggleButtonState();
+      });
     });
-    setEventListeners(form, config);
-  });
-}
+  }
 
-function setEventListeners(form, config) {
-  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
-  const submitButton = form.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputs, submitButton, config);
-
-  inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-      checkInputValidity(input, config);
-      toggleButtonState(inputs, submitButton, config);
+  enableValidation() {
+    this._form.addEventListener("submit", (e) => {
+      e.preventDefault();
     });
-  });
-}
 
-function checkInputValidity(input, config) {
-  const errorElement = document.querySelector(`#${input.id}-error`);
-  if (!input.validity.valid) {
-    showInputError(input, errorElement, config);
-  } else {
-    hideInputError(input, errorElement, config);
+    this._setEventListeners();
   }
 }
 
-function showInputError(input, errorElement, config) {
-  input.classList.add(config.inputErrorClass);
-  errorElement.textContent = input.validationMessage;
-  errorElement.classList.add(config.errorClass);
-}
-
-function hideInputError(input, errorElement, config) {
-  input.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
-  errorElement.textContent = "";
-}
-
-function toggleButtonState(inputs, button, config) {
-  const hasInvalidInput = inputs.some((input) => !input.validity.valid);
-  if (hasInvalidInput) {
-    button.classList.add(config.inactiveButtonClass);
-    button.disabled = true;
-  } else {
-    button.classList.remove(config.inactiveButtonClass);
-    button.disabled = false;
-  }
-}
-
-enableValidation(formValidationConfig);
+export default FormValidator;

@@ -1,157 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Around the U.S</title>
+
+    <!--section 1: Header-->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta content="ie=edge" http-equiv="x-ua-compatible" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <title>Around the U.S.</title>
-    <link href="./pages/index.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Around the U.S" />
+
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
 
+  <!--Section 2: Body-->
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
           src="./images/logo.svg"
-          alt="Around the US logo"
-          class="header__logo"
+          alt="Around the U.S. Logo"
+          class="header__image"
         />
       </header>
-      <main class="content">
+      <main class="page__content">
         <section class="profile page__section">
           <img
-            src="./images/j.cousteau.jpg"
+            src="./images/jacques-cousteau.png"
             alt="Avatar"
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
-            <button
-              class="profile__edit-button"
-              id="profile-edit-button"
-              type="button"
-            ></button>
-            <p class="profile__description">Explorer</p>
+            <!--Profile-->
+            <div id="profile-title-input">
+              <div class="profile__title-label">
+                <h1 class="profile__title">Jacques Cousteau</h1>
+                <button
+                  aria-label="edit-button"
+                  type="button"
+                  class="profile__edit-button"
+                ></button>
+              </div>
+              <p class="profile__description">Explorer</p>
+            </div>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            aria-label="add-button"
+            type="button"
+            id="profile-add-button"
+            class="profile__add-button"
+          ></button>
         </section>
 
+        <!--Section: Cards-->
         <section class="cards page__section">
-          <ul class="cards__list"></ul>
+          <ul class="cards__list-content" id="cards_list_content"></ul>
         </section>
       </main>
       <footer class="footer page__section">
-        <p class="footer__copyright">&copy; 2024 Luis Segura</p>
+        <p class="footer__copyright">&copy; 2024 Around The U.S.</p>
       </footer>
     </div>
 
-    <!-- ADD CARD MODAL -->
-    <div class="modal" id="add-card-modal">
+    <!-- Edit Modal -->
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
           type="button"
           class="modal__close"
-          id="add-card-modal-close"
+          id="modal-close-button"
         ></button>
-        <h3 class="modal__heading">New Place</h3>
-        <form class="modal__form" id="add-card-form">
-          <input
-            type="text"
-            name="title"
-            id="add-card-title-input"
-            placeholder="Title"
-            class="modal__input modal__input_type_title"
-            required
-          />
-          <!-- Highlighted correction: Added span for error message -->
-          <span class="modal__error" id="add-card-title-input-error"></span>
+        <form class="modal__form" name="profile-form" id="profile-form">
+          <h2 class="modal__heading">Edit Modal</h2>
 
-          <input
-            type="url"
-            name="url"
-            id="add-card-url-input"
-            placeholder="Image URL"
-            class="modal__input modal__input_type_url"
-            required
-          />
-          <!-- Highlighted correction: Added span for error message -->
-          <span class="modal__error" id="add-card-url-input-error"></span>
+          <label class="modal__input-label"
+            >Name*
+            <input
+              class="modal__input modal__input-title"
+              type="text"
+              minlength="2"
+              maxlength="40"
+              id="owner-name"
+              placeholder="Name"
+              required
+            />
+            <span
+              class="modal__error modal__title_error"
+              id="owner-name-error"
+            ></span>
+          </label>
+          <label class="modal__input-label"
+            >About *
+            <input
+              class="modal__input modal__input-description"
+              type="text"
+              id="about"
+              minlength="2"
+              maxlength="200"
+              placeholder="Enter description"
+              required
+            />
+            <span
+              class="modal__error modal__description_error"
+              id="about-error"
+            ></span>
+          </label>
+          <button type="submit" class="modal__input-button" id="modal-button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
 
+    <!-- Add Modal -->
+    <div class="modal" id="profile-add-modal">
+      <div class="modal__add-profile modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="profile-modal-add-close-button"
+        ></button>
+        <form class="modal__form" id="add-form">
+          <h3 class="modal__heading">New Place</h3>
+
+          <!-- modal box content: 1 -->
+          <label class="modal__input-label"
+            >Title*
+            <input
+              class="modal__input modal__input_type-title"
+              type="text"
+              id="add-title"
+              minlength="1"
+              maxlength="30"
+              placeholder="Title"
+              required
+            />
+            <span
+              class="modal__error modal__error-input_title"
+              id="add-title-error"
+            ></span>
+          </label>
+
+          <!-- modal box content: 2 -->
+          <label class="modal__input-label"
+            >Image link *
+            <input
+              class="modal__input .modal__input_type-link"
+              id="link-type"
+              type="url"
+              name="url"
+              placeholder="Image link"
+              required
+            />
+            <span
+              class="modal__error modal__link_error"
+              id="link-type-error"
+            ></span>
+          </label>
+
+          <!-- modal add button-->
           <button
-            class="modal__button modal__button_disabled"
             type="submit"
-            disabled
+            class="modal__input-button"
+            id="modal-submit-button"
           >
-            Save
+            Create
           </button>
         </form>
       </div>
     </div>
 
-    <!-- PROFILE EDIT MODAL -->
-    <div class="modal" id="edit-modal">
-      <div class="modal__container">
+    <!-- image popup -->
+    <div class="modal modal_image_preview" id="modal-image-preview">
+      <div class="modal__image-container">
         <button
           type="button"
           class="modal__close"
-          id="edit-modal-close"
+          id="modal-close-button-preview"
         ></button>
-        <h3 class="modal__heading">Edit Profile</h3>
-        <form class="modal__form" id="profile-edit-form">
-          <input
-            type="text"
-            name="title"
-            id="profile-name-input"
-            placeholder="Name"
-            class="modal__input modal__input_type_name"
-            minlength="2"
-            maxlength="40"
-            required
-          />
-          <span class="modal__error" id="profile-name-input-error"></span>
-
-          <input
-            type="text"
-            name="description"
-            id="profile-description-input"
-            placeholder="Description"
-            class="modal__input modal__input_type_description"
-            minlength="2"
-            maxlength="200"
-            required
-          />
-          <span
-            class="modal__error"
-            id="profile-description-input-error"
-          ></span>
-          <button class="modal__button modal__button_disabled" type="submit">
-            Save
-          </button>
-        </form>
+        <img class="modal__image" src="#" alt="#" />
+        <p class="modal__caption"></p>
       </div>
     </div>
-
-    <div class="modal" id="preview-image-modal">
-      <div class="modal__container modal__preview-container">
-        <button class="modal__close" id="preview-modal-close"></button>
-        <img class="modal__image" id="modal-image" src="" />
-        <div class="modal__title"></div>
-      </div>
-    </div>
-
     <template id="card-template">
       <li class="card">
-        <button class="card__delete-button" type="button"></button>
         <img src="" alt="" class="card__image" />
-        <div class="card__description">
-          <h2 class="card__title"></h2>
-          <button class="card__like-button" type="button"></button>
+        <div class="card__description-content">
+          <h3 class="card__title"></h3>
+          <button
+            aria-label="like-button"
+            type="button"
+            class="card__like-button"
+          ></button>
+          <button
+            aria-label="delete-button"
+            type="button"
+            class="card__delete-button"
+          ></button>
         </div>
       </li>
     </template>
-
-    <script defer src="./scripts/index.js"></script>
-    <script defer src="./scripts/validation.js"></script>
+    <script type="module" src="./scripts/index.js" defer></script>
   </body>
 </html>
