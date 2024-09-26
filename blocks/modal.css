@@ -1,3 +1,4 @@
+/* --- Base Modal Styles --- */
 .modal {
   position: fixed;
   top: 0;
@@ -48,7 +49,6 @@
   margin: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  visibility: default;
   width: 430px;
 }
 
@@ -72,14 +72,16 @@
   border: none;
   position: absolute;
   cursor: pointer;
-  top: -45px;
-  right: -45px;
   background-image: url(../images/closeIcon.svg);
-  width: 40px;
-  height: 40px;
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 1000;
+  display: block;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -45px;
 }
 
 .modal__close:hover {
@@ -126,6 +128,7 @@
   display: flex;
   border-width: 1px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  margin-bottom: 5px;
 }
 
 .modal__input-button:hover {
@@ -163,7 +166,6 @@
   position: absolute;
   visibility: visible;
   height: 17px;
-  border: 1px;
   color: rgba(255, 0, 0, 1);
 }
 
@@ -173,38 +175,73 @@
   color: gray;
 }
 
-@media only screen and (max-width: 880px) {
+/* --- Mobile Responsive Styles for Larger Screens (max-width: 768px) --- */
+@media only screen and (max-width: 768px) {
   .modal__container {
-    width: 282px;
-    margin-top: 123px;
+    width: 80%; /* Set container width to 80% for medium-sized mobile screens */
+    padding: 20px;
+    margin-top: 20px;
   }
 
-  .modal__image-container {
-    display: flex;
-    justify-content: center;
-    width: 240px;
-    height: 299px;
+  .modal__heading {
+    font-size: 20px; /* Reduce font size for medium-sized mobile */
+    margin-bottom: 24px;
   }
 
-  .modal__caption {
-    margin-left: 70px;
-  }
-
-  .modal__close {
-    height: 26px;
-    margin-bottom: 13px;
+  .modal__input {
+    padding: 10px;
+    font-size: 14px;
+    width: 90%; /* Set consistent width for both media queries */
   }
 
   .modal__input-button {
-    margin-right: 22px;
-    margin-top: 30px;
+    padding: 12px;
+    font-size: 16px;
     height: 46px;
-    border-radius: 2px;
   }
 
-  .modal__close-button-preview {
-    width: 30px;
-    height: 30px;
-    left: 300px;
+  .modal__close {
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    right: -20px;
+  }
+
+  .modal__error {
+    font-size: 12px;
+  }
+}
+
+/* --- Mobile Responsive Styles for Smaller Screens (max-width: 320px) --- */
+@media only screen and (max-width: 320px) {
+  .modal__container {
+    width: 282px;
+    height: 322px;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .modal__input {
+    width: 90%; /* Ensure inputs fit the smaller container */
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .modal__input-button {
+    width: 100%; /* Keep full width for button */
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .modal__close {
+    width: 26px;
+    height: 26px;
+    top: -15px; /* Keep close button in bounds */
+    right: -15px;
+  }
+
+  .modal__heading {
+    font-size: 18px; /* Adjust for small screens */
+    margin-bottom: 20px;
   }
 }

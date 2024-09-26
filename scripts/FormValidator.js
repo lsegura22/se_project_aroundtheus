@@ -28,8 +28,7 @@ class FormValidator {
       this._button.classList.remove(this._inactiveButtonClass);
       this._button.disabled = false;
     } else {
-      this._button.classList.add(this._inactiveButtonClass);
-      this._button.disabled = true;
+      this.disabledButtonState(); // Call disabledButtonState to avoid duplication
     }
   }
 

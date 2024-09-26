@@ -1,6 +1,6 @@
-import FormValidator from "./validation.js";
+import FormValidator from "../scripts/FormValidator.js";
 import { settings } from "../utils/constants.js";
-import Card from "./card.js";
+import Card from "../scripts/Card.js";
 
 const initialCards = [
   {
@@ -34,12 +34,9 @@ const initialCards = [
 ];
 
 /* -------------------------- elements ----------------------------*/
-/* -------------------------- elements ----------------------------*/
 
 const previewModalImage = document.querySelector(".modal__image");
-// adding image preview
 const profileEditModal = document.querySelector("#profile-edit-modal");
-//adding image text caption
 const modalCaption = document.querySelector(".modal__caption");
 
 const profileCloseButton = document.querySelector("#modal-close-button");
@@ -48,11 +45,8 @@ const addModalCloseButton = addCardModal.querySelector(
   "#profile-modal-add-close-button"
 );
 
-// trash can
 const addButton = document.querySelector("#profile-add-button");
-//
 const cardsWrapEl = document.querySelector(".cards__list-content");
-//
 const addModalForm = addCardModal.querySelector("#add-form");
 const profileEditForm = profileEditModal.querySelector("#profile-form");
 
@@ -68,8 +62,6 @@ const descriptionInput = profileEditModal.querySelector(
 );
 
 const titleInput = addCardModal.querySelector("#add-title");
-console.log(1);
-console.log(titleInput);
 const inputLink = addCardModal.querySelector("#link-type");
 
 const cardTemplate =
@@ -91,8 +83,11 @@ function handleAddModalSubmit(e) {
     link: inputLink.value,
   };
 
-  renderCard(createCard(cardData));
-  closeModal(addModal);
+  renderCard(createCard(cardData)); // Render the card
+  closeModal(addModal); // Close the modal
+  addModalForm.reset(); // Reset the form fields
+  addFormValidator.disabledButtonState(); // Disable the submit button after reset
+  addFormValidator.resetValidation(); // Reset form validation state
 }
 
 /* ---------------------------- Event Listeners -------------------------- */
@@ -115,14 +110,12 @@ closeButtons.forEach((button) => {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.addEventListener("click", handleOverlayClick);
-
   document.addEventListener("keydown", closeOnEsc);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   modal.removeEventListener("click", handleOverlayClick);
-
   document.removeEventListener("keydown", closeOnEsc);
 }
 
@@ -158,9 +151,13 @@ profileEditButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 
 addButton.addEventListener("click", () => {
-  addModalForm.reset();
-  addFormValidator.disabledButtonState();
-  openModal(addCardModal);
+  // Check if form inputs are valid, toggle button state accordingly
+  if (addFormValidator._hasInvalidInput()) {
+    addFormValidator.disabledButtonState(); // Disable button if inputs are invalid
+  } else {
+    addFormValidator._toggleButtonState(); // Enable button if inputs are valid
+  }
+  openModal(addCardModal); // Open the modal
 });
 
 addModalForm.addEventListener("submit", handleAddModalSubmit);
