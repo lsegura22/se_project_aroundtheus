@@ -127,8 +127,21 @@
   line-height: 17px;
   display: flex;
   border-width: 1px;
+  border-bottom-color: #ccc; /* Default underline color */
   font-family: "Inter", Arial, Helvetica, sans-serif;
   margin-bottom: 5px;
+  margin-top: 13px;
+  transition: border-bottom-color 0.3s ease; /* Smooth transition for underline color */
+}
+
+/* New class for error state underline */
+.modal__input_error {
+  border-bottom-color: rgba(
+    255,
+    0,
+    0,
+    1
+  ); /* Red underline when there is an error */
 }
 
 .modal__input-button:hover {
@@ -167,6 +180,7 @@
   visibility: visible;
   height: 17px;
   color: rgba(255, 0, 0, 1);
+  margin-bottom: 13px;
 }
 
 .modal__disabled {
@@ -175,16 +189,15 @@
   color: gray;
 }
 
-/* --- Mobile Responsive Styles for Larger Screens (max-width: 768px) --- */
 @media only screen and (max-width: 768px) {
   .modal__container {
-    width: 80%; /* Set container width to 80% for medium-sized mobile screens */
+    width: 80%;
     padding: 20px;
     margin-top: 20px;
   }
 
   .modal__heading {
-    font-size: 20px; /* Reduce font size for medium-sized mobile */
+    font-size: 20px;
     margin-bottom: 24px;
   }
 
@@ -212,7 +225,6 @@
   }
 }
 
-/* --- Mobile Responsive Styles for Smaller Screens (max-width: 320px) --- */
 @media only screen and (max-width: 320px) {
   .modal__container {
     width: 282px;
@@ -228,7 +240,7 @@
   }
 
   .modal__input-button {
-    width: 100%; /* Keep full width for button */
+    width: 100%;
     padding: 10px;
     font-size: 14px;
   }
@@ -241,7 +253,7 @@
   }
 
   .modal__heading {
-    font-size: 18px; /* Adjust for small screens */
+    font-size: 18px;
     margin-bottom: 20px;
   }
 }
