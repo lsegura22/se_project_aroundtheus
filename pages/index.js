@@ -7,22 +7,18 @@ const initialCards = [
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
-
   {
     name: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
-
   {
     name: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
-
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
-
   {
     name: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
@@ -34,41 +30,34 @@ const initialCards = [
 ];
 
 /* -------------------------- elements ----------------------------*/
-
 const previewModalImage = document.querySelector(".modal__image");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalCaption = document.querySelector(".modal__caption");
-
 const profileCloseButton = document.querySelector("#modal-close-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 const addModalCloseButton = addCardModal.querySelector(
   "#profile-modal-add-close-button"
 );
-
 const addButton = document.querySelector("#profile-add-button");
 const cardsWrapEl = document.querySelector(".cards__list-content");
+
 const addModalForm = addCardModal.querySelector("#add-form");
 const profileEditForm = profileEditModal.querySelector("#profile-form");
-
 const profileEditButton = document.querySelector(".profile__edit-button");
 const addInputButton = document.querySelector(".modal__input-button");
 const cardListEl = document.querySelector(".cards__list-content");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-
 const nameInput = profileEditModal.querySelector(".modal__input-title");
 const descriptionInput = profileEditModal.querySelector(
   ".modal__input-description"
 );
-
 const titleInput = addCardModal.querySelector("#add-title");
 const inputLink = addCardModal.querySelector("#link-type");
-
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 /* ---------------------------- handlers ----------------------------- */
-
 function handleProfileFormSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -82,16 +71,13 @@ function handleAddModalSubmit(e) {
     name: titleInput.value,
     link: inputLink.value,
   };
-
   renderCard(createCard(cardData)); // Render the card
   closeModal(addModal); // Close the modal
   addModalForm.reset(); // Reset the form fields
   addFormValidator.disabledButtonState(); // Disable the submit button after reset
-  addFormValidator.resetValidation(); // Reset form validation state
 }
 
 /* ---------------------------- Event Listeners -------------------------- */
-
 const editModal = document.querySelector("#profile-edit-modal");
 const addModal = document.querySelector("#profile-add-modal");
 const editModalCloseBtn = editModal.querySelector(".modal__close");
@@ -100,7 +86,6 @@ const previewModal = document.querySelector("#modal-image-preview");
 const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button-preview"
 );
-
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
@@ -122,10 +107,8 @@ function closeModal(modal) {
 const cardSelector = "#card-template";
 
 /* ---------------------------- Validation -------------------------- */
-
 const editFormValidator = new FormValidator(settings, profileEditForm);
 const addFormValidator = new FormValidator(settings, addModalForm);
-
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
@@ -151,12 +134,6 @@ profileEditButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 
 addButton.addEventListener("click", () => {
-  // Check if form inputs are valid, toggle button state accordingly
-  if (addFormValidator._hasInvalidInput()) {
-    addFormValidator.disabledButtonState(); // Disable button if inputs are invalid
-  } else {
-    addFormValidator._toggleButtonState(); // Enable button if inputs are valid
-  }
   openModal(addCardModal); // Open the modal
 });
 

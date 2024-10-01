@@ -40,6 +40,7 @@
   visibility: visible;
   transition: ease-in-out 1s;
   opacity: 1;
+  padding: 123px 19px;
 }
 
 .modal__container {
@@ -134,14 +135,8 @@
   transition: border-bottom-color 0.3s ease; /* Smooth transition for underline color */
 }
 
-/* New class for error state underline */
 .modal__input_error {
-  border-bottom-color: rgba(
-    255,
-    0,
-    0,
-    1
-  ); /* Red underline when there is an error */
+  border-bottom-color: rgba(255, 0, 0, 1);
 }
 
 .modal__input-button:hover {
@@ -226,15 +221,16 @@
 }
 
 @media only screen and (max-width: 320px) {
+  .modal {
+    padding: 123px 19px;
+  }
   .modal__container {
     width: 282px;
     height: 322px;
-    padding: 15px;
-    margin: auto;
   }
 
   .modal__input {
-    width: 90%; /* Ensure inputs fit the smaller container */
+    width: 100%; /* Make sure the input fields fit within the modal container */
     padding: 8px;
     margin-bottom: 10px;
   }
@@ -248,12 +244,14 @@
   .modal__close {
     width: 26px;
     height: 26px;
-    top: -15px; /* Keep close button in bounds */
-    right: -15px;
+    top: 13.62px; /* Keep close button in bounds */
+    right: 18.62px;
+    position: fixed;
   }
 
   .modal__heading {
     font-size: 18px;
     margin-bottom: 20px;
+    line-height: 21.78px;
   }
 }

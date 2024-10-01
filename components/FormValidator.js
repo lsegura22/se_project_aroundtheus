@@ -2,7 +2,7 @@ class FormValidator {
   constructor(settings, formSelector) {
     this._settings = settings;
     this._inputSelector = settings.inputSelector;
-    this._inputErrorClass = settings.inputErrorClass;
+    this._inputErrorClass = settings.inputErrorClass; // modal__input_error comes from settings.inputErrorClass
     this._errorClass = settings.errorClass;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
@@ -14,8 +14,7 @@ class FormValidator {
   // Show the error message and apply red underline for invalid input
   _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.add(this._inputErrorClass);
-    inputEl.classList.add("modal__input_error"); // Add red underline for error
+    inputEl.classList.add(this._inputErrorClass); // Use inputErrorClass from settings
     errorMessageEl.classList.add(this._errorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
   }
@@ -23,8 +22,7 @@ class FormValidator {
   // Hide the error message and remove red underline for valid input
   _hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.remove(this._inputErrorClass);
-    inputEl.classList.remove("modal__input_error"); // Remove red underline for valid input
+    inputEl.classList.remove(this._inputErrorClass); // Use inputErrorClass from settings
     errorMessageEl.classList.remove(this._errorClass);
     errorMessageEl.textContent = "";
   }
