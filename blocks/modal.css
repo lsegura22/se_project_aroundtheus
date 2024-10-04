@@ -248,4 +248,8 @@
     margin-bottom: 40px;
     line-height: 21.78px;
   }
+
+  .modal__image {
+    max-width: 100%;
+  }
 }
