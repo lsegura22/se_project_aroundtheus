@@ -1,4 +1,5 @@
-/* --- Base Modal Styles --- */
+/* Base modal styles */
+
 .modal {
   position: fixed;
   top: 0;
@@ -34,6 +35,7 @@
   font-size: 24px;
   line-height: 29px;
   margin-bottom: 34px;
+  margin-top: 0; /* Updated heading margin for desktop */
 }
 
 .modal_opened {
@@ -45,7 +47,7 @@
 
 .modal__container {
   position: relative;
-  padding: 36px;
+  padding: 34px 36px; /* Updated desktop padding */
   background-color: #ffff;
   margin: auto;
   border-radius: 10px;
@@ -131,8 +133,12 @@
   border-bottom-color: #ccc; /* Default underline color */
   font-family: "Inter", Arial, Helvetica, sans-serif;
   margin-bottom: 5px;
-  margin-top: 13px;
+  margin-top: 54px; /* Space between heading and first input for desktop */
   transition: border-bottom-color 0.3s ease; /* Smooth transition for underline color */
+}
+
+.modal__input + .modal__input {
+  margin-top: 29.74px; /* Space between both inputs for desktop */
 }
 
 .modal__input_error {
@@ -184,74 +190,50 @@
   color: gray;
 }
 
-@media only screen and (max-width: 768px) {
-  .modal__container {
-    width: 80%;
-    padding: 20px;
-    margin-top: 20px;
-  }
-
-  .modal__heading {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
-  .modal__input {
-    padding: 10px;
-    font-size: 14px;
-    width: 90%; /* Set consistent width for both media queries */
-  }
-
-  .modal__input-button {
-    padding: 12px;
-    font-size: 16px;
-    height: 46px;
-  }
-
-  .modal__close {
-    width: 20px;
-    height: 20px;
-    top: -20px;
-    right: -20px;
-  }
-
-  .modal__error {
-    font-size: 12px;
-  }
-}
-
+/* Mobile Modal (up to 320px wide) */
 @media only screen and (max-width: 320px) {
   .modal {
     padding: 123px 19px;
   }
+
   .modal__container {
     width: 282px;
     height: 322px;
+    padding: 25px; /* Modal container padding for mobile */
+    position: relative;
   }
 
   .modal__input {
     width: 100%; /* Make sure the input fields fit within the modal container */
     padding: 8px;
     margin-bottom: 10px;
+    margin-top: 75px; /* Space between heading and first input for mobile */
+  }
+
+  .modal__input + .modal__input {
+    margin-top: 30px; /* Space between both inputs for mobile */
   }
 
   .modal__input-button {
     width: 100%;
     padding: 10px;
-    font-size: 14px;
+    font-size: 14px; /* Button font size for mobile */
+    margin-top: 45px; /* Space between last input and button for mobile */
   }
 
   .modal__close {
     width: 26px;
     height: 26px;
-    top: 13.62px; /* Keep close button in bounds */
-    right: 18.62px;
-    position: fixed;
+    top: -30px; /* Position close button above modal for mobile */
+    right: -10px;
+    position: absolute;
+    z-index: 1001;
   }
 
   .modal__heading {
-    font-size: 18px;
+    font-size: 18px; /* Heading font size for mobile */
     margin-bottom: 20px;
     line-height: 21.78px;
+    margin-top: 0; /* Heading margin top for mobile */
   }
 }
