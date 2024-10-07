@@ -238,8 +238,8 @@
     width: 26px;
     height: 26px;
     top: -50px; /* Keep close button in bounds */
-    right: 10px;
-    position: fixed;
+    right: -24px;
+    position: absolute;
   }
 
   .modal__heading {
