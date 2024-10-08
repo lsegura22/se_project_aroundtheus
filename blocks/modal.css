@@ -50,7 +50,7 @@
   margin: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  width: 430px;
+  width: 394px;
 }
 
 .modal__image-container {
@@ -115,7 +115,7 @@
   line-height: 17px;
   display: flex;
   border-width: 1px;
-  border-bottom-color: #ccc; /* Default underline color */
+  border-bottom-color: #ccc;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   margin-top: 0;
   margin-bottom: 0;
@@ -126,17 +126,15 @@
   margin-bottom: 29.74px;
 }
 
-/* Ensure the last input does not have extra margin at the bottom */
 .modal__input:last-of-type {
   margin-bottom: 0;
 }
 
-/* Adjust the error message spacing */
 .modal__error {
   visibility: visible;
   height: 17px;
   color: rgba(255, 0, 0, 1);
-  margin-top: 5px; /* Set the space between the input and the error message to 5px */
+  margin-top: 5px;
   margin-bottom: 0;
 }
 
@@ -168,88 +166,29 @@
   color: gray;
 }
 
-@media only screen and (max-width: 768px) {
-  .modal__container {
-    width: 80%;
-    padding: 20px;
-    margin-top: 20px;
-  }
-
-  .modal__heading {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
-  .modal__input {
-    padding: 10px;
-    font-size: 14px;
-    width: 90%;
-  }
-
-  .modal__input-button {
-    padding: 12px;
-    font-size: 16px;
-    height: 46px;
-  }
-
-  .modal__close {
-    width: 20px;
-    height: 20px;
-    top: -20px;
-    right: -20px;
-  }
-
-  .modal__error {
-    font-size: 12px;
-  }
-}
-
 @media only screen and (max-width: 320px) {
-  .modal {
-    padding: 123px 19px;
-  }
   .modal__container {
     width: 282px;
-    height: 322px;
-    padding: 25px;
+    padding: 25px 22px;
+  }
+  .modal__heading {
+    font-size: 18px;
+    line-height: 21.78px;
+    margin-bottom: 75px;
   }
 
-  .modal__input {
-    width: 100%; /* Make sure the input fields fit within the modal container */
-    padding: 8px;
-    margin-bottom: 10px;
-    margin-top: 35px;
-  }
-
-  .modal__input:first-of-type {
+  .modal__input:not(:last-of-type) {
     margin-bottom: 30px;
-  }
-  .modal__input:last-of-type {
-    margin-bottom: 45px;
   }
 
   .modal__input-button {
-    width: 100%;
-    padding: 10px;
     font-size: 14px;
+    line-height: 16.94px;
   }
 
   .modal__close {
     width: 26px;
     height: 26px;
-    top: -50px; /* Keep close button in bounds */
-    right: -24px;
-    position: absolute;
-  }
-
-  .modal__heading {
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 40px;
-    line-height: 21.78px;
-  }
-
-  .modal__image {
-    max-width: 100%;
+    right: 0;
   }
 }

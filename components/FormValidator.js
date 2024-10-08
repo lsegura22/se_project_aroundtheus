@@ -2,8 +2,7 @@ class FormValidator {
   constructor(settings, formSelector) {
     this._settings = settings;
     this._inputSelector = settings.inputSelector;
-    this._inputErrorClass = settings.inputErrorClass; // modal__input_error comes from settings.inputErrorClass
-    this._errorClass = settings.errorClass;
+    this._inputErrorClass = settings.inputErrorClass;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._form = formSelector;
@@ -14,7 +13,7 @@ class FormValidator {
   // Show the error message and apply red underline for invalid input
   _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.add(this._inputErrorClass); // Use inputErrorClass from settings
+    inputEl.classList.add(this._inputErrorClass);
     errorMessageEl.classList.add(this._errorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
   }
@@ -22,18 +21,18 @@ class FormValidator {
   // Hide the error message and remove red underline for valid input
   _hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.remove(this._inputErrorClass); // Use inputErrorClass from settings
+    inputEl.classList.remove(this._inputErrorClass);
     errorMessageEl.classList.remove(this._errorClass);
     errorMessageEl.textContent = "";
   }
 
-  // Toggle the submit button state based on input validity
+  // Toggle the submit button state based on input validity and empty fields
   _toggleButtonState() {
     if (!this._hasInvalidInput()) {
       this._button.classList.remove(this._inactiveButtonClass);
       this._button.disabled = false;
     } else {
-      this.disabledButtonState(); // Use disabledButtonState to keep consistency
+      this.disabledButtonState();
     }
   }
 
@@ -43,9 +42,11 @@ class FormValidator {
     this._button.disabled = true;
   }
 
-  // Check if any input field is invalid
+  // Check if any input field is invalid or if all inputs are empty
   _hasInvalidInput() {
-    return this._inputEls.some((inputEl) => !inputEl.validity.valid);
+    return this._inputEls.some((inputEl) => {
+      return !inputEl.validity.valid || inputEl.value.trim() === ""; // Check for empty fields
+    });
   }
 
   // Check input validity and display/hide error messages
@@ -70,19 +71,22 @@ class FormValidator {
   // Enable form validation on initialization
   enableValidation() {
     this._form.addEventListener("submit", (e) => {
-      e.preventDefault(); // Prevent default form submission behavior
+      e.preventDefault();
     });
 
     this._setEventListeners();
+
+    // Call the toggleButtonState at initialization to disable the button if form is invalid or empty
+    this._toggleButtonState();
   }
 
   // Reset all validation states and error messages, disable the button
   resetValidation() {
     this._inputEls.forEach((inputEl) => {
-      this._hideInputError(inputEl); // Hide all input errors
+      this._hideInputError(inputEl);
     });
 
-    this.disabledButtonState(); // Disable the button after reset
+    this.disabledButtonState();
   }
 }
 
