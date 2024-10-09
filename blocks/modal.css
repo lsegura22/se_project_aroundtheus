@@ -191,4 +191,16 @@
     height: 26px;
     right: 0;
   }
+
+  .modal__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .modal__image {
+    width: 282px;
+    height: auto;
+    margin: 0 auto;
+  }
 }
