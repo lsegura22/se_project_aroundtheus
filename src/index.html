@@ -3,17 +3,16 @@
   <head>
     <title>Around the U.S</title>
 
-    <!--section 1: Header-->
+    <!-- section 1: Header -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Around the U.S" />
 
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
 
-  <!--Section 2: Body-->
+  <!-- Section 2: Body -->
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
@@ -31,7 +30,6 @@
             class="profile__image"
           />
           <div class="profile__info">
-            <!--Profile-->
             <div id="profile-title-input">
               <div class="profile__title-label">
                 <h1 class="profile__title">Jacques Cousteau</h1>
@@ -52,7 +50,7 @@
           ></button>
         </section>
 
-        <!--Section: Cards-->
+        <!-- Section: Cards -->
         <section class="cards page__section">
           <ul class="cards__list-content" id="cards_list_content"></ul>
         </section>
@@ -78,6 +76,7 @@
             <input
               class="modal__input modal__input-title"
               type="text"
+              name="name"
               minlength="2"
               maxlength="40"
               id="owner-name"
@@ -95,9 +94,10 @@
             <input
               class="modal__input modal__input-description"
               type="text"
-              id="about"
+              name="job"
               minlength="2"
               maxlength="200"
+              id="about"
               placeholder="Enter description"
               required
             />
@@ -107,7 +107,7 @@
             ></span>
           </label>
 
-          <button type="submit" class="modal__input-button" id="modal-button">
+          <button type="submit" class="modal__submit" id="modal-button">
             Save
           </button>
         </form>
@@ -125,13 +125,13 @@
         <form class="modal__form" id="add-form">
           <h3 class="modal__heading">New Place</h3>
 
-          <!-- modal box content: 1 -->
           <label class="modal__input-label">
             Title*
             <input
               class="modal__input modal__input_type-title"
               type="text"
               id="add-title"
+              name="add-title"
               minlength="1"
               maxlength="30"
               placeholder="Title"
@@ -143,14 +143,13 @@
             ></span>
           </label>
 
-          <!-- modal box content: 2 -->
           <label class="modal__input-label">
             Image link*
             <input
               class="modal__input modal__input_type-link"
               id="link-type"
               type="url"
-              name="url"
+              name="link-type"
               placeholder="Image link"
               required
             />
@@ -160,19 +159,14 @@
             ></span>
           </label>
 
-          <!-- modal add button-->
-          <button
-            type="submit"
-            class="modal__input-button"
-            id="modal-submit-button"
-          >
+          <button type="submit" class="modal__submit" id="modal-submit-button">
             Create
           </button>
         </form>
       </div>
     </div>
 
-    <!-- image popup -->
+    <!-- Image popup -->
     <div class="modal modal_image_preview" id="modal-image-preview">
       <div class="modal__image-container">
         <button
@@ -185,6 +179,7 @@
       </div>
     </div>
 
+    <!-- Template for the cards -->
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
@@ -203,6 +198,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js" defer></script>
   </body>
 </html>
