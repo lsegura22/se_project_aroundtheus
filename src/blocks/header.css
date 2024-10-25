@@ -8,9 +8,8 @@
 .header {
   margin-top: 45px;
   max-width: 880px;
-  border-color: rgba(84, 84, 84, 0.7);
-  border-width: 1px;
-  border-style: solid;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7); /* Apply border only to the bottom */
+  border-top: none;
   border-left-style: hidden;
   border-right-style: hidden;
   opacity: 1;

@@ -7,9 +7,9 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 // Import all CSS via index.css, which contains all @import statements
-import "../vendor/fonts.css";     // Updated path to reflect the vendor folder inside src
+import "../vendor/fonts.css"; // Updated path to reflect the vendor folder inside src
 import "../vendor/normalize.css"; // Updated path to reflect the vendor folder inside src
-import "../pages/index.css";      // This path remains the same
+import "../pages/index.css"; // This path remains the same
 
 document.addEventListener("DOMContentLoaded", () => {
   /* -------------------------- elements ----------------------------*/
@@ -103,6 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle opening the modal for adding a new card
   addButton.addEventListener("click", () => {
+    addCardForm.reset(); // Reset the form fields
+    addCardFormValidator.resetValidation(); // Reset form validation and disable the button
     addCardPopup.open(); // Open the modal
   });
 
