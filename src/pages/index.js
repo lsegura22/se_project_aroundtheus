@@ -5,7 +5,6 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-
 // Import all CSS via index.css, which contains all @import statements
 import "../vendor/fonts.css"; // Updated path to reflect the vendor folder inside src
 import "../vendor/normalize.css"; // Updated path to reflect the vendor folder inside src
@@ -18,14 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.querySelector(".modal__input-title");
   const descriptionInput = document.querySelector(".modal__input-description");
   const profileEditForm = document.querySelector("#profile-form");
+
   const addCardForm = document.querySelector("#add-form");
 
-  // Check if forms are correctly selected
-  console.log(profileEditForm); // Should not log 'null'
-  console.log(addCardForm); // Should not log 'null'
-
   /* ---------------------------- Instantiating Classes ----------------------------- */
-
   // UserInfo class manages displaying and updating user profile info
   const userInfo = new UserInfo({
     nameSelector: ".profile__title",
@@ -67,21 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardElement = createCard(cardData); // Create the new card
     cardSection.addItem(cardElement); // Add it to the DOM
     addCardPopup.close(); // Close the modal after adding the card
+    addCardForm.reset(); // Reset the form fields only after successful submission
   });
   addCardPopup.setEventListeners();
 
   /* ---------------------------- Form Validation ----------------------------- */
-
   // Initialize form validators for both forms
   const profileFormValidator = new FormValidator(settings, profileEditForm);
   const addCardFormValidator = new FormValidator(settings, addCardForm);
-
   // Enable form validation
   profileFormValidator.enableValidation();
   addCardFormValidator.enableValidation();
 
   /* ---------------------------- Handlers ----------------------------- */
-
   // Function to create a new Card instance
   function createCard(cardData) {
     const card = new Card(cardData, "#card-template", handleImageClick);
@@ -103,8 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle opening the modal for adding a new card
   addButton.addEventListener("click", () => {
-    addCardForm.reset(); // Reset the form fields
-    addCardFormValidator.resetValidation(); // Reset form validation and disable the button
+    // No need to reset validation here
     addCardPopup.open(); // Open the modal
   });
 
