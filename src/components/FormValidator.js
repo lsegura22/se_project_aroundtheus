@@ -14,7 +14,7 @@ class FormValidator {
   _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
-    errorMessageEl.classList.add(this._errorClass);
+    errorMessageEl.classList.add(this._settings.errorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
   }
 
@@ -22,7 +22,7 @@ class FormValidator {
   _hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.remove(this._inputErrorClass);
-    errorMessageEl.classList.remove(this._errorClass);
+    errorMessageEl.classList.remove(this._settings.errorClass);
     errorMessageEl.textContent = "";
   }
 
@@ -32,20 +32,20 @@ class FormValidator {
       this._button.classList.remove(this._inactiveButtonClass);
       this._button.disabled = false;
     } else {
-      this.disabledButtonState();
+      this._disableButtonState();
     }
   }
 
   // Disable the submit button and apply inactive styles
-  disabledButtonState() {
+  _disableButtonState() {
     this._button.classList.add(this._inactiveButtonClass);
     this._button.disabled = true;
   }
 
-  // Check if any input field is invalid or if all inputs are empty
+  // Check if any input field is invalid or if any are empty
   _hasInvalidInput() {
     return this._inputEls.some((inputEl) => {
-      return !inputEl.validity.valid || inputEl.value.trim() === ""; // Check for empty fields
+      return !inputEl.validity.valid || inputEl.value.trim() === ""; // Checks for invalid or empty inputs
     });
   }
 
@@ -76,7 +76,7 @@ class FormValidator {
 
     this._setEventListeners();
 
-    // Call the toggleButtonState at initialization to disable the button if form is invalid or empty
+    // Call toggleButtonState at initialization to disable the button if form is invalid or empty
     this._toggleButtonState();
   }
 
@@ -86,7 +86,7 @@ class FormValidator {
       this._hideInputError(inputEl);
     });
 
-    this.disabledButtonState();
+    this._disableButtonState(); // Ensures button is disabled when form is reset
   }
 }
 
