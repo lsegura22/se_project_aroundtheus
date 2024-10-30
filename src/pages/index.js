@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.querySelector(".modal__input-title");
   const descriptionInput = document.querySelector(".modal__input-description");
   const profileEditForm = document.querySelector("#profile-form");
-
   const addCardForm = document.querySelector("#add-form");
 
   /* ---------------------------- Instantiating Classes ----------------------------- */
@@ -62,8 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardElement = createCard(cardData); // Create the new card
     cardSection.addItem(cardElement); // Add it to the DOM
     addCardPopup.close(); // Close the modal after adding the card
+
     addCardForm.reset(); // Reset the form fields only after successful submission
-    addCardFormValidator.resetValidation(); // Reset validation and disable button after submission
+    addCardFormValidator.disableButton(); // Disable the button after form submission
   });
   addCardPopup.setEventListeners();
 

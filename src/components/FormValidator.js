@@ -32,12 +32,12 @@ class FormValidator {
       this._button.classList.remove(this._inactiveButtonClass);
       this._button.disabled = false;
     } else {
-      this._disableButtonState();
+      this.disableButton(); // Use disableButton method to disable the button
     }
   }
 
-  // Disable the submit button and apply inactive styles
-  _disableButtonState() {
+  // Disable the submit button and apply inactive styles (can be called externally)
+  disableButton() {
     this._button.classList.add(this._inactiveButtonClass);
     this._button.disabled = true;
   }
@@ -86,7 +86,7 @@ class FormValidator {
       this._hideInputError(inputEl);
     });
 
-    this._disableButtonState(); // Ensures button is disabled when form is reset
+    this.disableButton(); // Ensures button is disabled when form is reset
   }
 }
 
