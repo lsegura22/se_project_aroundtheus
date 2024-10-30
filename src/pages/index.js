@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardSection.addItem(cardElement); // Add it to the DOM
     addCardPopup.close(); // Close the modal after adding the card
     addCardForm.reset(); // Reset the form fields only after successful submission
+    addCardFormValidator.resetValidation(); // Reset validation and disable button after submission
   });
   addCardPopup.setEventListeners();
 
@@ -92,11 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
     nameInput.value = userData.name;
     descriptionInput.value = userData.job;
     profileEditPopup.open(); // Open the modal
+    profileFormValidator.resetValidation(); // Reset form validation for profile edit popup
   });
 
   // Handle opening the modal for adding a new card
   addButton.addEventListener("click", () => {
-    // No need to reset validation here
+    addCardFormValidator.resetValidation(); // Reset validation and disable button when opening add card popup
     addCardPopup.open(); // Open the modal
   });
 
