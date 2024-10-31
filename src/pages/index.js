@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle opening the modal for adding a new card
   addButton.addEventListener("click", () => {
-    addCardFormValidator.resetValidation(); // Reset validation and disable button when opening add card popup
+    addCardFormValidator.disableButton(); // Only disable button when opening add card popup
     addCardPopup.open(); // Open the modal
   });
 
