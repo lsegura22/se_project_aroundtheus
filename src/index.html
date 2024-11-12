@@ -2,17 +2,13 @@
 <html lang="en">
   <head>
     <title>Around the U.S</title>
-
-    <!-- section 1: Header -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Around the U.S" />
-
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
 
-  <!-- Section 2: Body -->
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
@@ -24,19 +20,32 @@
       </header>
       <main class="page__content">
         <section class="profile page__section">
-          <img
-            src="./images/j.cousteau.jpg"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <!-- Profile Picture -->
+            <img
+              src="./images/j.cousteau.jpg"
+              alt="Avatar"
+              class="profile__image"
+              id="profile-image"
+            />
+            <!-- Edit Avatar Button (on top of profile picture) -->
+            <button
+              aria-label="edit-avatar-button"
+              type="button"
+              class="profile__edit-avatar-button"
+              id="edit-avatar-button"
+            ></button>
+          </div>
           <div class="profile__info">
             <div id="profile-title-input">
               <div class="profile__title-label">
                 <h1 class="profile__title">Jacques Cousteau</h1>
+                <!-- Edit Name/Description Button (remains here) -->
                 <button
-                  aria-label="edit-button"
+                  aria-label="edit-profile-button"
                   type="button"
                   class="profile__edit-button"
+                  id="edit-profile-button"
                 ></button>
               </div>
               <p class="profile__description">Explorer</p>
@@ -60,7 +69,7 @@
       </footer>
     </div>
 
-    <!-- Edit Modal -->
+    <!-- Profile Edit Modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -114,7 +123,56 @@
       </div>
     </div>
 
-    <!-- Add Modal -->
+    <!-- Profile Avatar Modal -->
+    <div class="modal" id="profile-avatar-modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="modal-close-button-avatar"
+        ></button>
+        <form class="modal__form" id="profile-avatar-form">
+          <h2 class="modal__heading">Change Profile Picture</h2>
+
+          <label class="modal__input-label">
+            New Avatar URL*
+            <input
+              class="modal__input"
+              type="url"
+              name="avatar"
+              id="avatar-link"
+              placeholder="Enter image URL"
+              required
+            />
+          </label>
+
+          <button type="submit" class="modal__submit" id="modal-avatar-button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal (added this part) -->
+    <div class="modal" id="delete-confirmation-modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="delete-modal-close-button"
+        ></button>
+        <h2 class="modal__heading modal__heading-delete">Are you sure?</h2>
+        <button
+          type="button"
+          class="modal__submit modal__submit-delete"
+          id="modal-confirm-button"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+
+    <!-- Add Modal for New Card -->
     <div class="modal" id="profile-add-modal">
       <div class="modal__add-profile modal__container">
         <button
@@ -166,7 +224,7 @@
       </div>
     </div>
 
-    <!-- Image popup -->
+    <!-- Image popup for viewing images -->
     <div class="modal modal_image_preview" id="modal-image-preview">
       <div class="modal__image-container">
         <button
@@ -179,7 +237,7 @@
       </div>
     </div>
 
-    <!-- Template for the cards -->
+    <!-- Template for Cards -->
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />

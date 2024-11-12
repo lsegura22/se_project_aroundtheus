@@ -36,6 +36,10 @@
   margin-bottom: 54px;
 }
 
+.modal__heading-delete {
+  margin-bottom: 0;
+}
+
 .modal_opened {
   visibility: visible;
   transition: ease-in-out 1s;
@@ -154,6 +158,10 @@
   color: white;
   margin-top: 48px;
   border: none;
+}
+
+.modal__submit-delete {
+  margin-top: 38px;
 }
 
 .modal__submit_disabled {
