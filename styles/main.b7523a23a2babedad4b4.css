@@ -426,6 +426,7 @@ template {
   }
 }
 
+/* Existing profile styles */
 .profile {
   display: flex;
   align-items: center;
@@ -510,6 +511,41 @@ template {
   object-fit: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  transition: filter 0.3s ease-in-out; /* Smooth transition for brightness change */
+}
+
+/* Profile Image Container (added for positioning) */
+.profile__image-container {
+  position: relative; /* Ensures the edit button can be positioned over the image */
+}
+
+/* Edit Avatar Button - Positioning on top of profile picture */
+.profile__edit-avatar-button {
+  position: absolute; /* Positioning button on top of the profile picture */
+  top: 45px; /* Adjust this value to position the button vertically */
+  right: 75px; /* Adjust this value to position the button horizontally */
+  background: transparent url(../assets/8667ac4a523e8fc42e59.svg) center no-repeat;
+  width: 26px;
+  height: 26px;
+  border: none;
+  cursor: pointer;
+  background-size: 26px 26px;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s ease; /* Add smooth opacity change */
+}
+
+.profile__edit-avatar-button:hover {
+  opacity: 1; /* Make the button slightly more opaque on hover */
+}
+
+/* Darken profile image on hover */
+.profile__image-container:hover .profile__image {
+  filter: brightness(0.7); /* Darken the image */
+}
+
+.profile__image-container:hover .profile__edit-avatar-button {
+  opacity: 1; /* Ensure the button stays visible on hover */
 }
 
 @media screen and (max-width: 320px) {
@@ -566,6 +602,12 @@ template {
     margin-left: 19px;
     margin-right: 19px;
     margin-top: 36px;
+  }
+
+  /* Edit Avatar Button (mobile view) */
+  .profile__edit-avatar-button {
+    top: 5px; /* Adjusted for mobile if necessary */
+    right: 5px; /* Adjusted for mobile if necessary */
   }
 }
 
@@ -707,6 +749,10 @@ template {
   margin-bottom: 54px;
 }
 
+.modal__heading-delete {
+  margin-bottom: 0;
+}
+
 .modal_opened {
   visibility: visible;
   transition: ease-in-out 1s;
@@ -825,6 +871,10 @@ template {
   color: white;
   margin-top: 48px;
   border: none;
+}
+
+.modal__submit-delete {
+  margin-top: 38px;
 }
 
 .modal__submit_disabled {
