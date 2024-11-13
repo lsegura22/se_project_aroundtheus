@@ -136,11 +136,22 @@ document.addEventListener("DOMContentLoaded", () => {
   profileFormValidator.enableValidation();
   addCardFormValidator.enableValidation();
 
+  // Select avatar form and initialize its validator
+  const avatarForm = document.querySelector("#profile-avatar-form");
+  const avatarFormValidator = new FormValidator(settings, avatarForm);
+  avatarFormValidator.enableValidation(); // Now correctly initialized
+
   // Function to create a card
   function createCard(cardData, api) {
-    const card = new Card(cardData, "#card-template", handleImageClick, api); // Pass api to Card
+    const card = new Card(
+      cardData,
+      "#card-template",
+      handleImageClick,
+      api,
+      deleteConfirmationPopup
+    ); // Pass api to Card
     const cardElement = card.getView(); // Get the card view correctly
-
+    cardElement.dataset.id = cardData._id;
     // Attach event listener for the delete button after the card has been created
     cardElement
       .querySelector(".card__delete-button")
@@ -206,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "#modal-close-button-avatar"
   );
   const avatarLinkInput = document.querySelector("#avatar-link");
-  const avatarForm = document.querySelector("#profile-avatar-form");
 
   // Open the avatar modal when the edit button is clicked
   editAvatarButton.addEventListener("click", () => {

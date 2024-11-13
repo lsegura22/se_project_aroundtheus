@@ -1,5 +1,11 @@
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick, api) {
+  constructor(
+    cardData,
+    cardSelector,
+    handleImageClick,
+    api,
+    deleteConfirmationPopup
+  ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
@@ -7,6 +13,7 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._api = api; // Store the API instance for later use
+    this._confirmationPopup = deleteConfirmationPopup; // Use the popup passed from index.js
     this._handleLikeIcon = this._handleLikeIcon.bind(this); // To handle the like toggle
   }
 
@@ -61,8 +68,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.remove();
-    this._element = null;
+    this._confirmationPopup.open(this._id); // Open the delete confirmation popup with the card ID
   }
 
   getView() {
