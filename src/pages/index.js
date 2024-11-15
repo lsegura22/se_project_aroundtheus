@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     popupWithImage.open(data);
   }
 
-  // Open profile edit popup
   profileEditButton.addEventListener("click", () => {
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.name;
@@ -175,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
     profileFormValidator.resetValidation();
   });
 
-  // Open add card popup
   addButton.addEventListener("click", () => {
     addCardFormValidator.disableButton();
     addCardPopup.open();
