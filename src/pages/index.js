@@ -7,7 +7,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-
 import "../vendor/fonts.css";
 import "../vendor/normalize.css";
 import "../pages/index.css";
@@ -209,47 +208,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Handling avatar modal and avatar update
-  const editAvatarButton = document.querySelector("#edit-avatar-button");
-  const profileAvatarModal = document.querySelector("#profile-avatar-modal");
-  const closeAvatarModalButton = document.querySelector(
-    "#modal-close-button-avatar"
-  );
-  const avatarLinkInput = document.querySelector("#avatar-link");
-
-  // Open the avatar modal when the edit button is clicked
-  editAvatarButton.addEventListener("click", () => {
-    profileAvatarModal.classList.add("modal_opened");
-  });
-
-  // Close the avatar modal when the close button is clicked
-  closeAvatarModalButton.addEventListener("click", () => {
-    profileAvatarModal.classList.remove("modal_opened");
-  });
-
-  // Handle the form submission to update the profile avatar
-  avatarForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const newAvatarUrl = avatarLinkInput.value;
+  // Initialize the avatar modal with the Popup class
+  const avatarPopup = new PopupWithForm("#profile-avatar-modal", (formData) => {
+    const newAvatarUrl = formData.avatar;
+    console.log("Avatar URL is submitted:", newAvatarUrl);
 
     // Change the button text to "Saving..."
     const saveButton = document.querySelector("#modal-avatar-button");
     saveButton.textContent = "Saving...";
 
     // Send PATCH request to update avatar
+    console.log("Data sent to API:", { avatar: newAvatarUrl });
     api
       .updateProfileAvatar({ avatar: newAvatarUrl })
       .then((userData) => {
         const avatarImage = document.querySelector(".profile__image");
         avatarImage.src = userData.avatar; // Update the avatar image
         avatarImage.alt = "Profile Avatar"; // Update alt text
-        profileAvatarModal.classList.remove("modal_opened"); // Close the modal
+        avatarPopup.close(); // Use the Popup class to close the modal
       })
       .catch((error) => {
         console.error("Error updating avatar:", error);
       })
       .finally(() => {
-        // Reset the button text after the update (whether it was successful or not)
-        saveButton.textContent = "Save";
+        saveButton.textContent = "Save"; // Reset the button text after the update
       });
+  });
+  avatarPopup.setEventListeners();
+
+  // Event listener to open the avatar modal
+  const editAvatarButton = document.querySelector("#edit-avatar-button");
+  editAvatarButton.addEventListener("click", () => {
+    avatarPopup.open();
   });
 });

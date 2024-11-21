@@ -9,18 +9,20 @@ export default class PopupWithConfirmation extends Popup {
     if (this._popup) {
       this._confirmButton = this._popup.querySelector(".modal__submit");
       this._closeButton = this._popup.querySelector(".modal__close");
-      this._setEventListeners();
+      this._setConfirmationEventListeners();
+      this.setEventListeners(); // Ensure that the base class event listeners are also set
     } else {
       console.error("Popup element not found:", popupSelector);
     }
   }
 
-  _setEventListeners() {
+  // Custom event listeners specific to the confirmation modal
+  _setConfirmationEventListeners() {
     if (this._confirmButton) {
       this._confirmButton.addEventListener("click", () => {
         const cardId = this._cardId; // Store the card ID to be deleted
         this._handleConfirm(cardId); // Call the confirm handler
-        this.close(); // Close the popup
+        this.close(); // Close the popup after confirmation
       });
     }
 
@@ -32,8 +34,9 @@ export default class PopupWithConfirmation extends Popup {
     }
   }
 
+  // Override the open method to pass the cardId
   open(cardId) {
     this._cardId = cardId; // Store the card ID to be deleted
-    super.open(); // Call the open method from Popup class
+    super.open(); // Call the open method from the Popup class
   }
 }

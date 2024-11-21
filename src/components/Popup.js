@@ -22,8 +22,9 @@ export default class Popup {
 
   setEventListeners() {
     this._popup.addEventListener("mousedown", (evt) => {
+      console.log("Clicked element:", evt.target); // Logs the element that was clicked
       if (
-        evt.target.classList.contains("modal_opened") ||
+        evt.target === this._popup ||
         evt.target.classList.contains("modal__close")
       ) {
         this.close();
