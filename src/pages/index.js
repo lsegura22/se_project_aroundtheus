@@ -19,6 +19,10 @@ const api = new Api({
   },
 });
 
+function handleApiError(error) {
+  console.error("An error occurred during the API request:", error);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const profileEditButton = document.querySelector(".profile__edit-button");
   const addButton = document.querySelector("#profile-add-button");
@@ -30,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userInfo = new UserInfo({
     nameSelector: ".profile__title",
     jobSelector: ".profile__description",
+    avatarSelector: ".profile__image",
   });
 
   const cardSection = new Section(
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Change the button text to "Saving..."
       const saveButton = document.querySelector("#modal-button");
       saveButton.textContent = "Saving...";
+      saveButton.disabled = true;
 
       api
         .updateProfile(updatedData)
@@ -65,17 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
             name: userData.name,
             job: userData.about,
           });
-          const avatarImage = document.querySelector(".profile__image");
-          avatarImage.src = userData.avatar;
-          avatarImage.alt = userData.name;
           profileEditPopup.close();
+          saveButton.disabled = true;
         })
-        .catch((error) => {
-          console.error("Error updating profile information:", error);
-        })
+        .catch(handleApiError)
         .finally(() => {
           // Reset the button text after the update (whether it was successful or not)
           saveButton.textContent = "Save";
+          saveButton.disabled = false;
         });
     }
   );
@@ -90,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Change the button text to "Saving..."
     const saveButton = document.querySelector("#modal-submit-button");
     saveButton.textContent = "Saving...";
+    saveButton.disabled = true;
 
     console.log("Sending card data:", cardData); // Log the card data being sent
 
@@ -101,13 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
         cardSection.addItem(cardElement);
         addCardPopup.close();
         addCardForm.reset();
-        addCardFormValidator.disableButton();
+        saveButton.disabled = true;
       })
-      .catch((error) => {
-        console.error("Error adding new card:", error); // Log any errors
-      })
+      .catch(handleApiError)
       .finally(() => {
-        saveButton.textContent = "Create"; // Reset the button text after the action
+        saveButton.textContent = "Create";
+        saveButton.disabled = false;
       });
   });
   addCardPopup.setEventListeners();
@@ -122,13 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
           if (cardElement) {
             cardElement.remove();
           }
-          console.log("Card deleted successfully.");
+          deleteConfirmationPopup.close();
         })
-        .catch((error) => {
-          console.error("Error deleting card:", error);
-        });
+        .catch(handleApiError);
     }
   );
+
+  deleteConfirmationPopup.setEventListeners();
 
   const profileFormValidator = new FormValidator(settings, profileEditForm);
   const addCardFormValidator = new FormValidator(settings, addCardForm);
@@ -185,14 +188,10 @@ document.addEventListener("DOMContentLoaded", () => {
       userInfo.setUserInfo({
         name: userData.name,
         job: userData.about,
+        avatar: userData.avatar,
       });
-      const avatarImage = document.querySelector(".profile__image");
-      avatarImage.src = userData.avatar;
-      avatarImage.alt = userData.name;
     })
-    .catch((error) => {
-      console.error("Error fetching user information:", error);
-    });
+    .catch(handleApiError);
 
   // Fetch initial cards
   api
@@ -203,9 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cardSection.addItem(cardElement);
       });
     })
-    .catch((error) => {
-      console.error("Error fetching cards:", error);
-    });
+    .catch(handleApiError);
 
   // Handling avatar modal and avatar update
   // Initialize the avatar modal with the Popup class
@@ -216,22 +213,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Change the button text to "Saving..."
     const saveButton = document.querySelector("#modal-avatar-button");
     saveButton.textContent = "Saving...";
+    saveButton.disabled = true;
 
-    // Send PATCH request to update avatar
-    console.log("Data sent to API:", { avatar: newAvatarUrl });
     api
       .updateProfileAvatar({ avatar: newAvatarUrl })
       .then((userData) => {
-        const avatarImage = document.querySelector(".profile__image");
-        avatarImage.src = userData.avatar; // Update the avatar image
-        avatarImage.alt = "Profile Avatar"; // Update alt text
-        avatarPopup.close(); // Use the Popup class to close the modal
+        userInfo.setUserInfo({
+          avatar: userData.avatar,
+        });
+        avatarPopup.close();
+        saveButton.disabled = true;
       })
-      .catch((error) => {
-        console.error("Error updating avatar:", error);
-      })
+      .catch(handleApiError)
       .finally(() => {
-        saveButton.textContent = "Save"; // Reset the button text after the update
+        saveButton.textContent = "Save";
+        saveButton.disabled = false;
       });
   });
   avatarPopup.setEventListeners();
@@ -240,5 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const editAvatarButton = document.querySelector("#edit-avatar-button");
   editAvatarButton.addEventListener("click", () => {
     avatarPopup.open();
+    avatarFormValidator.resetValidation();
   });
 });

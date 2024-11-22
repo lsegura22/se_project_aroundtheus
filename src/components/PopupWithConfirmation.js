@@ -9,8 +9,8 @@ export default class PopupWithConfirmation extends Popup {
     if (this._popup) {
       this._confirmButton = this._popup.querySelector(".modal__submit");
       this._closeButton = this._popup.querySelector(".modal__close");
+      this._overlay = this._popup.querySelector(".modal"); // Assuming '.modal' is the overlay
       this._setConfirmationEventListeners();
-      this.setEventListeners(); // Ensure that the base class event listeners are also set
     } else {
       console.error("Popup element not found:", popupSelector);
     }
