@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cardSection.addItem(cardElement);
         addCardPopup.close();
         addCardForm.reset();
-        saveButton.disabled = true;
       })
       .catch(handleApiError)
       .finally(() => {
@@ -143,25 +142,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarFormValidator = new FormValidator(settings, avatarForm);
   avatarFormValidator.enableValidation(); // Now correctly initialized
 
-  // Function to create a card
   function createCard(cardData, api) {
     const card = new Card(
       cardData,
       "#card-template",
       handleImageClick,
       api,
-      deleteConfirmationPopup
-    ); // Pass api to Card
-    const cardElement = card.getView(); // Get the card view correctly
-    cardElement.dataset.id = cardData._id;
-    // Attach event listener for the delete button after the card has been created
-    cardElement
-      .querySelector(".card__delete-button")
-      .addEventListener("click", () => {
-        deleteConfirmationPopup.open(cardData._id);
-      });
-
-    return cardElement; // Return the correctly initialized card element
+      () => {
+        deleteConfirmationPopup.open(cardData._id); // Pass the delete logic as a function
+      }
+    ); // Create a new card instance with delete logic encapsulated
+    return card.getView(); // Return the card's DOM element
   }
 
   function handleImageClick(data) {

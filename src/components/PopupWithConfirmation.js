@@ -5,7 +5,6 @@ export default class PopupWithConfirmation extends Popup {
     super(popupSelector);
     this._handleConfirm = handleConfirm; // Function to call when confirmed
 
-    // Make sure the popup element exists before querying
     if (this._popup) {
       this._confirmButton = this._popup.querySelector(".modal__submit");
       this._closeButton = this._popup.querySelector(".modal__close");
@@ -22,7 +21,7 @@ export default class PopupWithConfirmation extends Popup {
       this._confirmButton.addEventListener("click", () => {
         const cardId = this._cardId; // Store the card ID to be deleted
         this._handleConfirm(cardId); // Call the confirm handler
-        this.close(); // Close the popup after confirmation
+        // Removed `this.close()` to ensure popup closes only after success
       });
     }
 
