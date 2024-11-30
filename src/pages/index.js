@@ -148,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "#card-template",
       handleImageClick,
       api,
-      () => {
-        deleteConfirmationPopup.open(cardData._id); // Pass the delete logic as a function
-      }
+      deleteConfirmationPopup
     ); // Create a new card instance with delete logic encapsulated
     return card.getView(); // Return the card's DOM element
   }

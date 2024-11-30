@@ -78,28 +78,25 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._confirmationPopup.open(this._id);
-
-    // Handling deletion inside confirmation popup
     this._confirmationPopup.setHandleSubmit(() => {
       this._api
         .deleteCard(this._id)
         .then(() => {
-          this._element.remove();
-          this._element = null; // Prevent memory leaks
-          this._confirmationPopup.close();
+          this._element.remove(); // Successfully removes the card element
+          this._element = null; // Help prevent memory leaks
+          this._confirmationPopup.close(); // Ensure popup closes after operation
         })
         .catch((error) => {
           console.error("Error deleting card:", error);
         });
     });
+    this._confirmationPopup.open(this._id); // Open popup with current card ID to confirm deletion
   }
 
   getView() {
     this._element = this._getTemplate();
-    const cardImage = this._element.querySelector(".card__image");
-    cardImage.src = this._link;
-    cardImage.alt = this._name;
+    this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__image").alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
 
     this._cardLikeButton = this._element.querySelector(".card__like-button");
