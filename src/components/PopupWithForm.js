@@ -9,10 +9,12 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     const inputList = this._form.querySelectorAll(".modal__input");
+    console.log("Inputs in form:", inputList); // Log all inputs in the form
     const formValues = {};
     inputList.forEach((input) => {
       formValues[input.name] = input.value;
     });
+    console.log("Collected form values:", formValues); // Log collected values
     return formValues;
   }
 
@@ -21,7 +23,11 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this._form.reset(); // Reset the form only after successful submission
     });
+  }
+
+  close() {
+    super.close();
+    this._form.reset();
   }
 }
