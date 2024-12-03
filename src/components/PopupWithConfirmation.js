@@ -6,9 +6,6 @@ export default class PopupWithConfirmation extends Popup {
     this._handleConfirm = handleConfirm; // Save the initial confirm handler
     if (this._popup) {
       this._confirmButton = this._popup.querySelector(".modal__submit");
-      this._closeButton = this._popup.querySelector(".modal__close");
-      this._overlay = this._popup.querySelector(".modal"); // Assuming '.modal' is the overlay
-      this._setConfirmationEventListeners();
     } else {
       console.error("Popup element not found:", popupSelector);
     }
@@ -19,20 +16,13 @@ export default class PopupWithConfirmation extends Popup {
     this._handleConfirm = newHandleConfirm;
   }
 
-  // Custom event listeners specific to the confirmation modal
-  _setConfirmationEventListeners() {
-    super.setEventListeners(); // Ensure base class event listeners are set up
+  // Override setEventListeners to include custom listeners
+  setEventListeners() {
+    super.setEventListeners(); // Call the parent method to ensure base listeners are added
     if (this._confirmButton) {
       this._confirmButton.addEventListener("click", () => {
         const cardId = this._cardId;
         this._handleConfirm(cardId); // Call the confirmation handler with the current card ID
-      });
-    }
-
-    if (this._closeButton) {
-      // Add event listener for close button
-      this._closeButton.addEventListener("click", () => {
-        this.close(); // Close the popup when close button is clicked
       });
     }
   }
